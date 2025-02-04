@@ -5,6 +5,8 @@ import { Pages } from '@/shared/constants/routes'
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}`
 
+const UNAUTHORIZED_STATUSES = [401]
+
 export const apiService = axios.create({
   baseURL: BASE_URL,
   headers: {
@@ -29,7 +31,7 @@ const responseRejectInterceptor = async (error: AxiosError) => {
 
   const errStatus = error.response?.status
 
-  if (errStatus === 401 || errStatus === 403) {
+  if (errStatus && UNAUTHORIZED_STATUSES.includes(errStatus)) {
     localStorage.removeItem(STORAGE_KEYS.Access_token)
     window.location.href = `/${Pages.Login}`
   }

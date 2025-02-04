@@ -1,5 +1,5 @@
 import React from 'react'
-import { Profile } from '@shared/components/profile/Profile'
+import { Profile } from '@shared/components/profile/profile'
 
 const ProfilePage = () => {
   return (

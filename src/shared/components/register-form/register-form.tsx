@@ -11,7 +11,7 @@ import {
 import { RegisterFormFields } from '@shared/components/register-form/forms/register-form'
 import { Loader } from '@shared/components/ui/loader/loader'
 import Link from 'next/link'
-import { Pages } from '@shared/constants/routes'
+import { LOGIN_PAGE } from '@shared/constants/routes'
 
 export const RegisterForm = () => {
   const {
@@ -29,8 +29,8 @@ export const RegisterForm = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 dark:bg-gray-900">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <div className="pt-10 flex flex-col items-center justify-center">
+      <div className="w-full max-w-md p-8 space-y-6 rounded-lg shadow-md bg-gray-100 dark:bg-gray-800">
         <h1 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100">
           Registration
         </h1>
@@ -47,6 +47,7 @@ export const RegisterForm = () => {
               Email
             </Label>
             <Input
+              placeholder={RegisterFormFields.Email}
               id={RegisterFormFields.Email}
               type="email"
               {...register(RegisterFormFields.Email)}
@@ -66,6 +67,7 @@ export const RegisterForm = () => {
               Password
             </Label>
             <Input
+              placeholder={RegisterFormFields.Password}
               id={RegisterFormFields.Password}
               type="password"
               {...register(RegisterFormFields.Password)}
@@ -85,6 +87,7 @@ export const RegisterForm = () => {
               Confirm Password
             </Label>
             <Input
+              placeholder={RegisterFormFields.ConfirmPassword}
               id={RegisterFormFields.ConfirmPassword}
               type="password"
               {...register(RegisterFormFields.ConfirmPassword)}
@@ -97,7 +100,10 @@ export const RegisterForm = () => {
             )}
           </div>
           <h1 className="text-m text-center text-gray-900 dark:text-gray-100">
-            Already have an account? <Link className="underline hover:text-blue-600" href={Pages.Login}>Login</Link>
+            Already have an account?{' '}
+            <Link className="underline hover:text-blue-600" href={LOGIN_PAGE}>
+              Login
+            </Link>
           </h1>
           <Button
             variant={'default'}
@@ -109,5 +115,5 @@ export const RegisterForm = () => {
         </form>
       </div>
     </div>
-)
+  )
 }

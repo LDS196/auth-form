@@ -2,14 +2,16 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRegister } from '@shared/api/hooks/use-register'
 import { Button, Input, Label } from '@shared/components/ui'
 
 import { RegisterFormFields } from '@shared/components/register-form/forms/register-form'
 import { Loader } from '@shared/components/ui/loader/loader'
 import Link from 'next/link'
-import { Pages } from '@shared/constants/routes'
-import { LoginFormData, schema } from '@shared/components/login-form/schemas/validation-login-form'
+import { REGISTER_PAGE } from '@shared/constants/routes'
+import {
+  LoginFormData,
+  schema,
+} from '@shared/components/login-form/schemas/validation-login-form'
 import { useLogin } from '@shared/api/hooks/use-login'
 
 export const LoginForm = () => {
@@ -28,8 +30,8 @@ export const LoginForm = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 dark:bg-gray-900">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <div className="pt-10 flex flex-col items-center justify-center">
+      <div className="w-full max-w-md p-8 space-y-6 rounded-lg shadow-md bg-gray-100 dark:bg-gray-800">
         <h1 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100">
           Login
         </h1>
@@ -46,6 +48,7 @@ export const LoginForm = () => {
               Email
             </Label>
             <Input
+              placeholder={RegisterFormFields.Email}
               id={RegisterFormFields.Email}
               type="email"
               {...register(RegisterFormFields.Email)}
@@ -65,6 +68,7 @@ export const LoginForm = () => {
               Password
             </Label>
             <Input
+              placeholder={RegisterFormFields.Password}
               id={RegisterFormFields.Password}
               type="password"
               {...register(RegisterFormFields.Password)}
@@ -77,7 +81,13 @@ export const LoginForm = () => {
             )}
           </div>
           <h1 className="text-m text-center text-gray-900 dark:text-gray-100">
-            Don&#39;t have an account? <Link className="underline hover:text-blue-600" href={Pages.Register}>Register</Link>
+            Don&#39;t have an account?
+            <Link
+              className="underline hover:text-blue-600 ml-2"
+              href={REGISTER_PAGE}
+            >
+              Register
+            </Link>
           </h1>
           <Button
             variant={'default'}
@@ -89,5 +99,5 @@ export const LoginForm = () => {
         </form>
       </div>
     </div>
-)
+  )
 }

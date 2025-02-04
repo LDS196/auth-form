@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import './globals.css'
 import QueryProvider from '../shared/providers/query-provider'
-import { Heading } from '@shared/components/heading/Heading'
+import { Heading } from '@shared/components/heading/heading'
 import ThemeProvider from '@shared/providers/theme-provider'
 import { Toaster } from '@shared/components/ui/toaster'
 

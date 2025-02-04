@@ -7,14 +7,13 @@ export const useQToast = () => {
   const showToast = (error: AxiosError | unknown) => {
     if (error instanceof AxiosError) {
       toast({
-        title: 'Register error:',
+        title: 'Error:',
         description: error.response?.data?.message || error.message,
       })
     } else {
       toast({
-        title: 'Unknown error during register',
+        title: 'Unknown error',
         description: error?.toString(),
-        type: 'background',
       })
     }
   }
