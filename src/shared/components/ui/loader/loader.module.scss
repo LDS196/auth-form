@@ -1,12 +1,14 @@
-.container {
+.loader-container {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
-
-  background-color: var(--backgroundLoader) ;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .loader {
@@ -19,7 +21,7 @@
   height: 80px;
   padding: 8px;
 
-  background: var(--indigo-9);
+  background:blue;
   border-radius: 50%;
 
   mask: var(--mask-gradient);
@@ -41,7 +43,7 @@
   width: 8px;
   height: 8px;
 
-  background-color: var(--indigo-9);
+  background-color: blue;
   border-radius: 50%;
 }
 

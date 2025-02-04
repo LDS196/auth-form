@@ -9,6 +9,7 @@ import {
   schema,
 } from '@shared/components/register-form/schemas/validation-register-form'
 import { RegisterFormFields } from '@shared/components/register-form/forms/register-form'
+import { Loader } from '@shared/components/ui/loader/loader'
 
 export const RegisterForm = () => {
   const {
@@ -31,6 +32,7 @@ export const RegisterForm = () => {
         <h1 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100">
           Registration
         </h1>
+        {isLoading && <Loader/>}
         <form
           onSubmit={handleSubmit(handelRegister)}
           className="flex flex-col space-y-6"
