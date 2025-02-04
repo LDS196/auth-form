@@ -6,15 +6,18 @@ import { Button, Input, Label } from '@shared/components/ui'
 
 import { RegisterFormFields } from '@shared/components/register-form/forms/register-form'
 import { Loader } from '@shared/components/ui/loader/loader'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { REGISTER_PAGE } from '@shared/constants/routes'
 import {
   LoginFormData,
   schema,
 } from '@shared/components/login-form/schemas/validation-login-form'
 import { useLogin } from '@shared/api/hooks/use-login'
+import { useTranslations } from 'next-intl'
 
 export const LoginForm = () => {
+  const t = useTranslations()
+
   const {
     register,
     handleSubmit,
@@ -33,7 +36,7 @@ export const LoginForm = () => {
     <div className="pt-10 flex flex-col items-center justify-center">
       <div className="w-full max-w-md p-8 space-y-6 rounded-lg shadow-md bg-gray-100 dark:bg-gray-800">
         <h1 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100">
-          Login
+          {t('login.title')}
         </h1>
         {isLoading && <Loader />}
         <form
@@ -94,7 +97,7 @@ export const LoginForm = () => {
             type="submit"
             className="w-full py-2 mt-4 text-white bg-blue-600 rounded-md dark:bg-blue-500"
           >
-            Login
+            {t('login.title')}
           </Button>
         </form>
       </div>

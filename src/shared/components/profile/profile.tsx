@@ -2,12 +2,15 @@
 import React, { useEffect } from 'react'
 import { useProfile } from '@shared/api/hooks/use-profile'
 import { checkAuth } from '@shared/utils/utils'
-import { useRouter } from 'next/navigation'
 import { Button, Skeleton } from '@shared/components/ui'
 import { LucideMail, KeyIcon } from 'lucide-react'
 import { useLogout } from '@shared/api/hooks/use-logout'
+import { useTranslations } from 'next-intl'
+import { useRouter } from '@/i18n/routing'
 
 export const Profile = () => {
+  const t = useTranslations();
+
   const isAuth = checkAuth()
   const { profile, isLoading } = useProfile()
   const { logout } = useLogout()
@@ -27,7 +30,7 @@ export const Profile = () => {
       ) : (
         <div className="w-full max-w-md p-8 space-y-6 rounded-lg shadow-md bg-gray-100 dark:bg-gray-800">
           <h1 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100">
-            Profile
+            {t('profile.title')}
           </h1>
 
           <div className="flex flex-col space-y-6">
@@ -49,7 +52,7 @@ export const Profile = () => {
               type="submit"
               className="w-full py-2 mt-4 text-white bg-blue-600 rounded-md dark:bg-blue-500"
             >
-              Logout
+              {t('profile.btn')}
             </Button>
           </div>
         </div>

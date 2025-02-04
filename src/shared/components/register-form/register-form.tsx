@@ -10,10 +10,13 @@ import {
 } from '@shared/components/register-form/schemas/validation-register-form'
 import { RegisterFormFields } from '@shared/components/register-form/forms/register-form'
 import { Loader } from '@shared/components/ui/loader/loader'
-import Link from 'next/link'
 import { LOGIN_PAGE } from '@shared/constants/routes'
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/routing'
 
 export const RegisterForm = () => {
+  const t = useTranslations();
+
   const {
     register,
     handleSubmit,
@@ -32,7 +35,7 @@ export const RegisterForm = () => {
     <div className="pt-10 flex flex-col items-center justify-center">
       <div className="w-full max-w-md p-8 space-y-6 rounded-lg shadow-md bg-gray-100 dark:bg-gray-800">
         <h1 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100">
-          Registration
+          {t('register.title')}
         </h1>
         {isLoading && <Loader />}
         <form
@@ -110,7 +113,7 @@ export const RegisterForm = () => {
             type="submit"
             className="w-full py-2 mt-4 text-white bg-blue-600 rounded-md dark:bg-blue-500"
           >
-            Register
+            {t('register.btn')}
           </Button>
         </form>
       </div>

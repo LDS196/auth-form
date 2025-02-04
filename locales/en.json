@@ -1,0 +1,14 @@
+{
+  "login": {
+    "title": "Login",
+    "btn": "Login"
+  },
+  "register": {
+    "title": "Register",
+    "btn": "Register"
+  },
+  "profile": {
+    "title": "Profile",
+    "btn": "Logout"
+  }
+}

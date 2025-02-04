@@ -5,7 +5,7 @@ import { Pages } from '@/shared/constants/routes'
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}`
 
-const UNAUTHORIZED_STATUSES = [401]
+const UNAUTHORIZED_STATUSES = [401,403,400]
 
 export const apiService = axios.create({
   baseURL: BASE_URL,
@@ -32,8 +32,9 @@ const responseRejectInterceptor = async (error: AxiosError) => {
   const errStatus = error.response?.status
 
   if (errStatus && UNAUTHORIZED_STATUSES.includes(errStatus)) {
+    const currentLocale = window.location.pathname.split('/')[1] || 'en'
     localStorage.removeItem(STORAGE_KEYS.Access_token)
-    window.location.href = `/${Pages.Login}`
+    window.location.href = `/${currentLocale}/${Pages.Login}`
   }
 
   return Promise.reject(error)
