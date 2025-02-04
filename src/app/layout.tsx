@@ -4,6 +4,7 @@ import './globals.css'
 import QueryProvider from '../shared/providers/query-provider'
 import { Heading } from '@shared/components/heading/Heading'
 import ThemeProvider from '@shared/providers/theme-provider'
+import { Toaster } from '@shared/components/ui/toaster'
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -30,6 +31,7 @@ export default function RootLayout({
           <ThemeProvider>
             <Heading />
             <main>{children}</main>
+            <Toaster />
           </ThemeProvider>
         </QueryProvider>
       </body>

@@ -29,8 +29,7 @@ const responseRejectInterceptor = async (error: AxiosError) => {
 
   const errStatus = error.response?.status
 
-  if (errStatus === 401) {
-    debugger
+  if (errStatus === 401 || errStatus === 403) {
     localStorage.removeItem(STORAGE_KEYS.Access_token)
     window.location.href = `/${Pages.Login}`
   }
@@ -43,6 +42,3 @@ apiService.interceptors.response.use(
   (response) => response,
   responseRejectInterceptor,
 )
-
-
-

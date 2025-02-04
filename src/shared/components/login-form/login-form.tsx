@@ -4,39 +4,38 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRegister } from '@shared/api/hooks/use-register'
 import { Button, Input, Label } from '@shared/components/ui'
-import {
-  RegisterFormData,
-  schema,
-} from '@shared/components/register-form/schemas/validation-register-form'
+
 import { RegisterFormFields } from '@shared/components/register-form/forms/register-form'
 import { Loader } from '@shared/components/ui/loader/loader'
 import Link from 'next/link'
 import { Pages } from '@shared/constants/routes'
+import { LoginFormData, schema } from '@shared/components/login-form/schemas/validation-login-form'
+import { useLogin } from '@shared/api/hooks/use-login'
 
-export const RegisterForm = () => {
+export const LoginForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegisterFormData>({
+  } = useForm<LoginFormData>({
     resolver: zodResolver(schema),
   })
-  const { mutateAsync: registerUser, isLoading } = useRegister()
+  const { mutateAsync: loginUser, isLoading } = useLogin()
 
-  const handelRegister = async (data: RegisterFormData) => {
+  const handelLogin = async (data: LoginFormData) => {
     const userData = { email: data.email, password: data.password }
-    await registerUser(userData)
+    await loginUser(userData)
   }
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100 dark:bg-gray-900">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
         <h1 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100">
-          Registration
+          Login
         </h1>
         {isLoading && <Loader />}
         <form
-          onSubmit={handleSubmit(handelRegister)}
+          onSubmit={handleSubmit(handelLogin)}
           className="flex flex-col space-y-6"
         >
           <div>
@@ -77,34 +76,15 @@ export const RegisterForm = () => {
               </p>
             )}
           </div>
-          <div>
-            <Label
-              htmlFor={RegisterFormFields.ConfirmPassword}
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-            >
-              Confirm Password
-            </Label>
-            <Input
-              id={RegisterFormFields.ConfirmPassword}
-              type="password"
-              {...register(RegisterFormFields.ConfirmPassword)}
-              className="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:bg-gray-700 dark:border-gray-600"
-            />
-            {errors.confirmPassword && (
-              <p className="mt-1 text-sm text-red-600">
-                {errors.confirmPassword.message}
-              </p>
-            )}
-          </div>
           <h1 className="text-m text-center text-gray-900 dark:text-gray-100">
-            Already have an account? <Link className="underline hover:text-blue-600" href={Pages.Login}>Login</Link>
+            Don&#39;t have an account? <Link className="underline hover:text-blue-600" href={Pages.Register}>Register</Link>
           </h1>
           <Button
             variant={'default'}
             type="submit"
             className="w-full py-2 mt-4 text-white bg-blue-600 rounded-md dark:bg-blue-500"
           >
-            Register
+            Login
           </Button>
         </form>
       </div>
