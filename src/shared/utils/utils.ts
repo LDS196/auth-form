@@ -7,4 +7,4 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 
-export const checkAuth = () => localStorage.getItem(STORAGE_KEYS.Access_token) !== null
+export const checkAccessToken = () => localStorage.getItem(STORAGE_KEYS.Access_token) !== null
