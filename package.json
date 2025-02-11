@@ -7,27 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.ts": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.tsx": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.json": [
-      "prettier --write"
-    ],
-    "*.css": [
-      "prettier --write"
-    ]
+    "*.js": ["eslint --fix", "prettier --write"],
+    "*.ts": ["eslint --fix", "prettier --write"],
+    "*.tsx": ["eslint --fix", "prettier --write"],
+    "*.json": ["prettier --write"],
+    "*.css": ["prettier --write"]
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
