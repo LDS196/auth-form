@@ -69,7 +69,6 @@ body {
   body {
     @apply bg-background text-foreground;
     margin: 0 auto;
-    max-width: 1440px;
     width: 100%;
     position: relative;
   }
