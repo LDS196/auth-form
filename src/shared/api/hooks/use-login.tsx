@@ -17,6 +17,7 @@ export const useLogin = () => {
       router.push(MAIN_PAGE)
     },
     onError(error: AxiosError | unknown) {
+      debugger
       showToast(error)
     },
   })

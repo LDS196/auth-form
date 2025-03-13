@@ -5,7 +5,7 @@ import { Pages } from '@/shared/constants/routes'
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}`
 
-const UNAUTHORIZED_STATUSES = [401,403,400]
+const UNAUTHORIZED_STATUSES = [401]
 
 export const apiService = axios.create({
   baseURL: BASE_URL,
